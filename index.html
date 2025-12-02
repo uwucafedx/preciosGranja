@@ -1,133 +1,173 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Calculadora de Compra</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #000;
-    padding: 20px;
-    color: white;
-  }
-  h1 {
-    text-align: center;
-  }
-  .container {
-    max-width: 500px;
-    margin: auto;
-    background: linear-gradient(135deg, rgba(255,105,180,0.35), rgba(255,165,0,0.35));
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(255,140,0,0.4);
-  }
-  .item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    padding: 10px;
-    border-radius: 8px;
-  }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Compras</title>
+    <style>
+        body {
+            background: linear-gradient(180deg, #ff7ad1, #ff9a4d);
+            background-color: #ff7ad1;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
 
-  .item:nth-child(odd) {
-    background: linear-gradient(135deg, rgba(255,182,193,0.35), rgba(255,140,0,0.35));
-  }
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px rgba(255, 130, 180, 0.7);
+        }
 
-  .item:nth-child(even) {
-    background: linear-gradient(135deg, rgba(255,192,203,0.35), rgba(255,165,0,0.45));
-  }
-  input[type="number"] {
-    width: 80px;
-    padding: 5px;
-  }
-  .total {
-    margin-top: 20px;
-    font-size: 1.3em;
-    font-weight: bold;
-    text-align: center;
-  }
-  button {
-    width: 100%;
-    padding: 10px;
-    font-size: 1.1em;
-    border: none;
-    border-radius: 8px;
-    background: #007bff;
-    color: white;
-    cursor: pointer;
-    margin-top: 15px;
-  }
-  button:hover {
-    background: #0056b3;
-  }
-</style>
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: #ffffff20;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(255, 130, 180, 0.6);
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 12px 0;
+            padding: 12px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #ff8ccd, #ff7a00cc);
+        }
+
+        .item:nth-child(even) {
+            background: linear-gradient(90deg, #ff9cdf, #ffa14dcc);
+        }
+
+        label {
+            font-size: 18px;
+        }
+
+        input {
+            width: 70px;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        #total {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            background: #ffffff30;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(255, 130, 180, 0.5);
+        }
+    </style>
 </head>
 <body>
-  <h1>Calculadora de Compra</h1>
-  <div class="container">
+    <h1>🛒 Calculadora de Compras</h1>
 
-    <div class="item"><label>📦 Envío ($500)</label><input type="number" id="envioInput" value="1" min="0"></div>
+    <div class="container">
+        <div class="item">
+            <label>📦 Envío ($500)</label>
+            <input type="number" id="envio" value="1" min="1" disabled />
+        </div>
 
-    <div class="item"><label>🍊 Naranjas ($4)</label><input type="number" id="naranjas" value="0" min="0"></div>
-    <div class="item"><label>🍎 Manzanas ($4)</label><input type="number" id="manzanas" value="0" min="0"></div>
+        <div class="item">
+            <label>🍊 Naranjas ($4)</label>
+            <input type="number" id="naranjas" value="0" min="0" />
+        </div>
 
-    <div class="item"><label>🫐 Arándanos ($2)</label><input type="number" id="arandanos" value="0" min="0"></div>
-    <div class="item"><label>🥔 Papas ($2)</label><input type="number" id="papas" value="0" min="0"></div>
+        <div class="item">
+            <label>🍎 Manzanas ($4)</label>
+            <input type="number" id="manzanas" value="0" min="0" />
+        </div>
 
-    <div class="item"><label>🍍 Piñas ($1)</label><input type="number" id="pinas" value="0" min="0"></div>
-    <div class="item"><label>🍓 Frutillas ($1)</label><input type="number" id="frutillas" value="0" min="0"></div>
-    <div class="item"><label>🍋 Limones ($1)</label><input type="number" id="limones" value="0" min="0"></div>
-    <div class="item"><label>🍈 Limas ($1)</label><input type="number" id="limas" value="0" min="0"></div>
+        <div class="item">
+            <label>🫐 Arándanos ($2)</label>
+            <input type="number" id="arandanos" value="0" min="0" />
+        </div>
 
-    <div class="item"><label>🥩 Jamón ($9)</label><input type="number" id="jamon" value="0" min="0"></div>
-    <div class="item"><label>🥩 Losa ($9)</label><input type="number" id="losa" value="0" min="0"></div>
-    <div class="item"><label>🥩 Venado ($9)</label><input type="number" id="venado" value="0" min="0"></div>
+        <div class="item">
+            <label>🥔 Papas ($2)</label>
+            <input type="number" id="papas" value="0" min="0" />
+        </div>
 
-    <div class="item"><label>🥛 Leche ($4)</label><input type="number" id="leches" value="0" min="0"></div>
-    <div class="item"><label>🥚 Huevos ($1)</label><input type="number" id="huevos" value="0" min="0"></div>
+        <div class="item">
+            <label>🍍 Piñas ($1)</label>
+            <input type="number" id="pinas" value="0" min="0" />
+        </div>
 
-    <button onclick="calcular()">Calcular Total</button>
-    <button style="background:#777;" onclick="limpiar()">Limpiar</button>
+        <div class="item">
+            <label>🍓 Frutillas ($1)</label>
+            <input type="number" id="frutillas" value="0" min="0" />
+        </div>
 
-    <div class="total" id="total">Total: $0</div>
-  </div>
+        <div class="item">
+            <label>🍋 Limones ($1)</label>
+            <input type="number" id="limones" value="0" min="0" />
+        </div>
 
-<script>
-function calcular() {
-  const envio = (parseInt(document.getElementById('envioInput').value) || 0) * 500;
-  const naranjas = parseInt(document.getElementById('naranjas').value) || 0;
-  const manzanas = parseInt(document.getElementById('manzanas').value) || 0;
-  const arandanos = parseInt(document.getElementById('arandanos').value) || 0;
-  const papas = parseInt(document.getElementById('papas').value) || 0;
-  const pinas = parseInt(document.getElementById('pinas').value) || 0;
-  const frutillas = parseInt(document.getElementById('frutillas').value) || 0;
-  const limones = parseInt(document.getElementById('limones').value) || 0;
-  const limas = parseInt(document.getElementById('limas').value) || 0;
+        <div class="item">
+            <label>🍈 Limas ($1)</label>
+            <input type="number" id="limas" value="0" min="0" />
+        </div>
 
-  const jamon = parseInt(document.getElementById('jamon').value) || 0;
-  const losa = parseInt(document.getElementById('losa').value) || 0;
-  const venado = parseInt(document.getElementById('venado').value) || 0;
+        <div class="item">
+            <label>🥩 Carnes ($9)</label>
+            <input type="number" id="carnes" value="0" min="0" />
+        </div>
 
-  const leches = parseInt(document.getElementById('leches').value) || 0;
-  const huevos = parseInt(document.getElementById('huevos').value) || 0;
+        <div class="item">
+            <label>🥛 Leches ($4)</label>
+            <input type="number" id="leches" value="0" min="0" />
+        </div>
 
-  const total = envio
-    + (naranjas * 4) + (manzanas * 4)
-    + (arandanos * 2) + (papas * 2)
-    + (pinas * 1) + (frutillas * 1) + (limones * 1) + (limas * 1)
-    + (jamon * 9) + (losa * 9) + (venado * 9)
-    + (leches * 4)
-    + (huevos * 1);
+        <div class="item">
+            <label>🥚 Huevos ($1)</label>
+            <input type="number" id="huevos" value="0" min="0" />
+        </div>
 
-  document.getElementById('total').innerText = `Total: $${total}`;
-}
+        <div id="total">Total: $500</div>
+    </div>
 
-function limpiar() {
-  document.querySelectorAll('input').forEach(i => i.value = 0);
-  document.getElementById('total').innerText = 'Total: $0';
-}
-</script>
+    <script>
+        function calcularTotal() {
+            const precios = {
+                envio: 500,
+                naranjas: 4,
+                manzanas: 4,
+                arandanos: 2,
+                papas: 2,
+                pinas: 1,
+                frutillas: 1,
+                limones: 1,
+                limas: 1,
+                carnes: 9,
+                leches: 4,
+                huevos: 1,
+            };
 
+            let total = precios.envio;
+
+            for (let key in precios) {
+                if (key !== "envio") {
+                    const cantidad = parseInt(document.getElementById(key).value) || 0;
+                    total += cantidad * precios[key];
+                }
+            }
+
+            document.getElementById("total").textContent = `Total: $${total}`;
+        }
+
+        document.querySelectorAll("input").forEach(input => {
+            input.addEventListener("input", calcularTotal);
+        });
+    </script>
 </body>
 </html>
